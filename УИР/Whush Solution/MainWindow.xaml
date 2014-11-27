@@ -1,0 +1,94 @@
+﻿<Window
+    x:Class="Whush.Demo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+    Title="Редактор спектрограм"
+    Height="500"
+    Width="1000"
+    MinHeight="160"
+    MinWidth="260"
+    Icon="/mainicon.ico"
+    Style="{StaticResource VS2012WindowStyle}"
+    >
+    <DockPanel>
+        <StatusBar
+            DockPanel.Dock="Bottom"
+            Height="24"
+            Name="StBar">
+            <TextBlock Margin="3,0,0,0">Готово</TextBlock>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ResizeGrip Opacity="0.75"/>
+            </StatusBarItem>
+        </StatusBar>
+        <StackPanel Name="Menu" DockPanel.Dock="Left" Width="1" Orientation="Vertical" Background="#007ACC">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*" />
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Button Content="" HorizontalAlignment="Center" Height="46" Style="{DynamicResource MenuItemArrow}" VerticalAlignment="Top" Width="46" Foreground="#FFFDFDFD"
+                    Name="MenuItemButtonArrow" 
+                    Margin="0 5 0 5"
+                    Visibility="Hidden"
+                    Click="MenuItemButtonArrow_Click" 
+                    RenderTransformOrigin="1.543,0.5"/>
+                <RadioButton Grid.Row="1" 
+                        Name="FileToggleButton"
+                        Style="{DynamicResource MenuItems}" FontSize="22" Content="Фаил" 
+                        Click="ButtonOpen_Click"
+                        />
+                <RadioButton Grid.Row="2" Style="{DynamicResource MenuItems}" FontSize="22" Content="Инструменты"/>
+                <RadioButton Grid.Row="3" Style="{DynamicResource MenuItems}" FontSize="22" Content="Помощь"/>
+                <RadioButton Grid.Row="4" Style="{DynamicResource MenuItems}" FontSize="22" Content="Выход"/>
+            </Grid>
+
+        </StackPanel>
+        <Button DockPanel.Dock="Left" HorizontalAlignment="Left" Style="{DynamicResource MenuArrow}" Width="8" RenderTransformOrigin="-0.688,-0.091" Height="11" VerticalAlignment="Top"
+                Margin="-3.59 -3.5 0 0"
+                Click="Button_Click"
+                Name="ButtonArrow"/>
+        <Grid Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="67*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="662*"/>
+                <ColumnDefinition Width="22*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Canvas Grid.Column="1"  Grid.Row="1" />-->
+
+            <d3:ChartPlotter Name="plotter" Grid.Column="1"  Grid.Row="1" Margin="40 15 0 0">
+                <d3:Header TextBlock.FontSize="20">
+                    Спектрограмма
+                </d3:Header>
+            </d3:ChartPlotter>
+            <StackPanel Grid.Column="1"  Grid.Row="0" Margin="40 0 0 0">                
+                <Button
+                     
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Style="{DynamicResource HorizontalMenuItems}">
+                </Button>
+                <Separator Margin="0 5 0 0"/>
+            </StackPanel>
+
+        </Grid>
+        <StackPanel DockPanel.Dock="Right" Width="0" Name="MenuPagesStacPanel">
+            <Grid>                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Открыть файл"/>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</Window>
